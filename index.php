@@ -35,6 +35,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'GET')
     {
         $name = $_GET['query_name'] ?? '';
+        $student = null;
 
         if ($name) {
             $stmt = $pdo->prepare("SELECT Name, Course, Subjects, `Year of Study` FROM Students WHERE Name = ?");
