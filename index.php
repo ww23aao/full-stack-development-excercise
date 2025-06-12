@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-    <header>
-        <title>Student Record | Input Record</title>
-        <script src=".js"></script>
-        <link rel="stylesheet", href=".css">
-    </header>
-
-    <body>
-        <h1 name="input_header">Student Registration</h1>
-        <form method="post" action="index.php">
-            <input type="text" name="input_name" placeholder="Name"/><br><br>
-            <input type="text" name="input_course" placeholder="Course"/><br><br>
-            <input type="text" name="input_subject_1" placeholder="Subject 1"/><br><br>
-            <input type="text" name="input_subject_2" placeholder="Subject 2"/><br><br>
-            <input type="text" name="input_subject_3" placeholder="Subject 3"/><br><br>
-            <input type="text" name="input_subject_4" placeholder="Subject 4"/><br><br>
-            <input type="text" name="input_year" placeholder="Year of Study"/><br><br>    
-            <input type="submit" name="input_submit" value="Submit"/><br><br>
-        </form>
-    </body>
-
-    <body>
-        <form method="get" action="index.php">
-            <h1 name="output_header">Student Query</h1>
-            <input type="input_name" name="query_name" placeholder="Student Name"/><br><br>
-            <input type="submit" name="query_submit" value="Query"/><br><br>
-            <?php
-                
-            ?>
-            <p name="output_name">Student Name: </p>
-            <p name="output_course">Course:</p>
-            <p name="output_subject_1">Subject 1: </p>
-            <p name="output_subject_2">Subject 2: </p>
-            <p name="output_subject_3">Subject 3: </p>
-            <p name="output_subject_4">Subject 4: </p> 
-            <p name="output_year">Student Year: </p> 
-        </form>
-    </body>
-
-</html>
-
 <?php
     $server = 'db';
     $username = 'root';
@@ -88,3 +45,44 @@
         }
     }
 ?>
+
+<!DOCTYPE html>
+<html>
+
+    <header>
+        <title>Student Record | Input Record</title>
+        <script src=".js"></script>
+        <link rel="stylesheet", href=".css">
+    </header>
+
+    <body>
+        <h1 name="input_header">Student Registration</h1>
+        <form method="post" action="index.php">
+            <input type="text" name="input_name" placeholder="Name"/><br><br>
+            <input type="text" name="input_course" placeholder="Course"/><br><br>
+            <input type="text" name="input_subject_1" placeholder="Subject 1"/><br><br>
+            <input type="text" name="input_subject_2" placeholder="Subject 2"/><br><br>
+            <input type="text" name="input_subject_3" placeholder="Subject 3"/><br><br>
+            <input type="text" name="input_subject_4" placeholder="Subject 4"/><br><br>
+            <input type="text" name="input_year" placeholder="Year of Study"/><br><br>    
+            <input type="submit" name="input_submit" value="Submit"/><br><br>
+        </form>
+    </body>
+
+    <body>
+        <form method="get" action="index.php">
+            <h1 name="output_header">Student Query</h1>
+            <input type="input_name" name="query_name" placeholder="Student Name"/><br><br>
+            <input type="submit" name="query_submit" value="Query"/><br><br>
+
+            <?php if ($student): ?>
+                <p name="output_name">Student Name: <?echo $student["Name"]?></p>
+                <p name="output_course">Course: <?echo $student["Course"]?></p>
+                <p name="output_subject_1">Subjects: <?echo $student["Subjects"]?></p>
+                <p name="output_year">Student Year: <?echo $student["Year of Study"]?></p>   
+            <?php endif; ?>
+            
+        </form>
+    </body>
+
+</html>
