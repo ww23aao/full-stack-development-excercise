@@ -1,7 +1,14 @@
-h1 {
-    color: blue
+h1 
+{
+    color: darkcyan
 }
 
-body {
-    background-color: cyan;
+body 
+{
+    background-color: lightcyan;
+}
+
+p
+{
+    color: grey
 }
