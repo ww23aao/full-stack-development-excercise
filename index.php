@@ -51,7 +51,7 @@
     <header>
         <title>Student Record | Input Record</title>
         <script src=".js"></script>
-        <link rel="stylesheet", href=".css">
+        <link rel="stylesheet", href="style.css">
     </header>
 
     <body>
