@@ -40,8 +40,6 @@
             $stmt = $pdo->prepare("SELECT Name, Course, Subjects, `Year of Study` FROM Students WHERE Name = ?");
             $stmt->execute([$name]);
             $student = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            var_dump($student);
         }
     }
 ?>
@@ -76,10 +74,19 @@
             <input type="submit" name="query_submit" value="Query"/><br><br>
 
             <?php if ($student): ?>
-                <p name="output_name">Student Name: <?echo $student["Name"]?></p>
-                <p name="output_course">Course: <?echo $student["Course"]?></p>
-                <p name="output_subject_1">Subjects: <?echo $student["Subjects"]?></p>
-                <p name="output_year">Student Year: <?echo $student["Year of Study"]?></p>   
+                <p name="output_name">Student Name: <?= htmlspecialchars($student["Name"]) ?></p>
+                <p name="output_course">Course: <?= htmlspecialchars($student["Course"]) ?></p>
+                <p name="output_year">Student Year: <?= htmlspecialchars($student["Year of Study"]) ?></p>
+
+                <?php
+                    $subjectsJson = $student["Subjects"];
+                    $subjects = json_decode($subjectsJson, true);
+                    foreach ($subjects as $subject => $grade):
+                ?>
+                    <!-- Will do HTML inside loop (end PHP then re-enter and endforeach loop) -->
+                    <p name="output_subject">Subject: <?= htmlspecialchars($subject) ?>, Grade: <?= htmlspecialchars($grade) ?></p>
+                
+                <?php endforeach; ?>
             <?php endif; ?>
             
         </form>
